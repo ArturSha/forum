@@ -1,5 +1,5 @@
-import { Route, Routes } from 'react-router-dom';
-import { Link } from 'react-router-dom';
+import { Route, Routes, Link } from 'react-router-dom';
+
 import { Suspense } from 'react';
 import { classNames } from '6shared/lib/classNames/classNames';
 import { useTheme } from '1app/providers/ThemeProvider';

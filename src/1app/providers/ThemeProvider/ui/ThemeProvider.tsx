@@ -1,9 +1,9 @@
-import { FC, useMemo, useState } from 'react';
+import { type FC, useMemo, useState } from 'react';
 import {
   LOCAL_STORAGE_THEME_KEY,
   Theme,
   ThemeContext,
-  ThemeContextProps,
+  type ThemeContextProps,
 } from '../lib/ThemeContext';
 
 const defaultTheme =

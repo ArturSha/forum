@@ -1,7 +1,5 @@
-import { AboutPage } from '2pages/AboutPage';
-import { MainPage } from '2pages/MainPage';
 import { routeConfig } from '6shared/config/routeConfig/routeConfig';
-import React, { Suspense } from 'react';
+import { Suspense } from 'react';
 import { Route, Routes } from 'react-router-dom';
 
 const AppRouter = () => {

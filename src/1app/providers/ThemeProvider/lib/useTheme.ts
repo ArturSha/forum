@@ -10,11 +10,15 @@ interface useThemeResult {
   theme: Theme;
 }
 export function useTheme(): useThemeResult {
-  const { theme, setTheme } = useContext(ThemeContext);
+  let { theme, setTheme } = useContext(ThemeContext);
+
+  theme = theme === undefined ? Theme.LIGHT : theme;
   const toggleTheme = () => {
-    const newTheme = theme === Theme.DARK ? Theme.LIGHT : Theme.DARK;
-    setTheme(newTheme);
-    localStorage.setItem(LOCAL_STORAGE_THEME_KEY, newTheme);
+    if (setTheme) {
+      const newTheme = theme === Theme.DARK ? Theme.LIGHT : Theme.DARK;
+      setTheme(newTheme);
+      localStorage.setItem(LOCAL_STORAGE_THEME_KEY, newTheme);
+    }
   };
   return { theme, toggleTheme };
 }
