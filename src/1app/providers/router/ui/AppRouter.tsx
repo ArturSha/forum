@@ -1,10 +1,11 @@
 import { routeConfig } from '6shared/config/routeConfig/routeConfig';
+import { PageLoader } from '6shared/ui/PageLoader/PageLoader';
 import { Suspense } from 'react';
 import { Route, Routes } from 'react-router-dom';
 
 const AppRouter = () => {
   return (
-    <Suspense fallback={<div>Loading...</div>}>
+    <Suspense fallback={<PageLoader />}>
       <Routes>
         {Object.values(routeConfig).map(({ element, path }) => (
           <Route

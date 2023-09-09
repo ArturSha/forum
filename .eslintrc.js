@@ -25,6 +25,8 @@ module.exports = {
     'react/react-in-jsx-scope': 'off',
     'react/jsx-uses-react': 'off',
     '@typescript-eslint/semi': 0,
+    '@typescript-eslint/indent' : 0,
+    'n/handle-callback-err' : 1 ,
     'react/jsx-indent': [2, 2],
     '@typescript-eslint/explicit-function-return-type': 'off',
     '@typescript-eslint/member-delimiter-style': 0,
