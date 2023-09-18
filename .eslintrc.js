@@ -3,7 +3,7 @@ module.exports = {
     browser: true,
     es2021: true,
   },
-  extends: ['standard-with-typescript', 'plugin:react/recommended', 'plugin:i18next/recommended'],
+  extends: ['standard-with-typescript', 'plugin:react/recommended', 'plugin:i18next/recommended', 'plugin:storybook/recommended'],
   overrides: [
     {
       env: {
@@ -37,6 +37,7 @@ module.exports = {
     '@typescript-eslint/naming-convention': 0,
     "@typescript-eslint/no-misused-promises": 0,
     "@typescript-eslint/prefer-nullish-coalescing":0,
-    "i18next/no-literal-string": ['error', {markupOnly:true}]
+    "i18next/no-literal-string": ['error', {markupOnly:true}],
+    "react/display-name": 0
   }, 
 };

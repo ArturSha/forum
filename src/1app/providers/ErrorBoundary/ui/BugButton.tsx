@@ -1,4 +1,4 @@
-import Button from '6shared/ui/Button/ui/Button';
+import { Button } from '6shared/ui/Button/ui/Button';
 import { useEffect, useState } from 'react';
 
 // Компонент для тестирования
