@@ -20,7 +20,7 @@ module.exports = {
     ecmaVersion: 'latest',
     sourceType: 'module',
   },
-  plugins: ['react', 'i18next'],
+  plugins: ['react', 'i18next','react-hooks'],
   rules: {
     'react/react-in-jsx-scope': 'off',
     'react/jsx-uses-react': 'off',
@@ -35,9 +35,11 @@ module.exports = {
     '@typescript-eslint/strict-boolean-expressions': 0,
     '@typescript-eslint/no-unused-vars': 1,
     '@typescript-eslint/naming-convention': 0,
-    "@typescript-eslint/no-misused-promises": 0,
-    "@typescript-eslint/prefer-nullish-coalescing":0,
-    "i18next/no-literal-string": ['error', {markupOnly:true}],
-    "react/display-name": 0
+    '@typescript-eslint/no-misused-promises': 0,
+    '@typescript-eslint/prefer-nullish-coalescing':0,
+    'i18next/no-literal-string': ['error', {markupOnly:true}],
+    'react/display-name': 0,
+    'react-hooks/rules-of-hooks': 'error',
+    'react-hooks/exhaustive-deps': 'error'
   }, 
 };
