@@ -15,7 +15,8 @@
     "test:unit": "jest --config ./config/jest/jest.config.ts",
     "storybook": "storybook dev -p 6006 -c ./config/storybook",
     "storybook:build": "storybook build -c ./config/storybook",
-    "chromatic": "npx chromatic --project-token=chpt_f89716d9e9c1701"
+    "chromatic": "npx chromatic --project-token=chpt_f89716d9e9c1701",
+    "prepare": "husky install"
   },
   "keywords": [],
   "author": "",
@@ -76,7 +77,8 @@
     "webpack": "^5.88.2",
     "webpack-bundle-analyzer": "^4.9.1",
     "webpack-cli": "^5.1.4",
-    "webpack-dev-server": "^4.15.1"
+    "webpack-dev-server": "^4.15.1",
+    "husky": "^8.0.0"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.5",
