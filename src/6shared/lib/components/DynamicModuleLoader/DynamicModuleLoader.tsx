@@ -35,7 +35,7 @@ export const DynamicModuleLoader: FC<DynamicModuleLoaderProps> = (props) => {
         Object.entries(reducers).forEach(
           ([name, reducer]: ReducersListEntry) => {
             store.reducerManager.remove(name);
-            dispatch({ type: `@INIT ${name} reducer ` });
+            dispatch({ type: `@DESTROY ${name} reducer ` });
           }
         );
       }

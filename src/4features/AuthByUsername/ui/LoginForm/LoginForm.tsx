@@ -2,7 +2,7 @@ import { classNames } from '6shared/lib/classNames/classNames';
 import { useTranslation } from 'react-i18next';
 import { Button, ButtonTheme } from '6shared/ui/Button/ui/Button';
 import { Input } from '6shared/ui/Input/ui/Input';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { memo, useCallback } from 'react';
 import { loginActions, loginReducer } from '../../model/slice/loginSlice';
 import { loginByUsername } from '../../model/services/loginByUsername/loginByUsername';
@@ -18,18 +18,20 @@ import {
 } from '6shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import i18n from '6shared/config/i18n/i18n';
 import cls from './LoginForm.module.scss';
+import { useAppDispatch } from '6shared/lib/hooks/useAppDispatch/useAppDispatch';
 
 export interface LoginFormProps {
   className?: string;
+  onSuccess: () => void;
 }
 
 const initialReducers: ReducersList = {
   loginForm: loginReducer,
 };
 
-const LoginForm = memo(({ className = '' }: LoginFormProps) => {
+const LoginForm = memo(({ className = '', onSuccess }: LoginFormProps) => {
   const { t } = useTranslation();
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const username = useSelector(getLoginUsername);
   const password = useSelector(getLoginPassword);
   const error = useSelector(getLoginError);
@@ -50,9 +52,11 @@ const LoginForm = memo(({ className = '' }: LoginFormProps) => {
   );
 
   const onLoginClick = useCallback(async () => {
-    // @ts-expect-error to-do custom hook from doc.
-    dispatch(loginByUsername({ username, password }));
-  }, [dispatch, password, username]);
+    const result = await dispatch(loginByUsername({ username, password }));
+    if (result.meta.requestStatus === 'fulfilled') {
+      onSuccess();
+    }
+  }, [dispatch, onSuccess, password, username]);
 
   return (
     <DynamicModuleLoader removeAfterUnmount={true} reducers={initialReducers}>
