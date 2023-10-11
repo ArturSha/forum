@@ -1,4 +1,4 @@
-import { classNames } from '6shared/lib/classNames/classNames';
+import { type Mods, classNames } from '6shared/lib/classNames/classNames';
 import {
   useState,
   useRef,
@@ -20,11 +20,11 @@ interface ModalProps {
 const ANIMATION_DELAY = 300;
 
 export const Modal = (props: ModalProps) => {
-  const { children, className = '', isOpen = false, onClose, lazy } = props;
+  const { children, className = '', isOpen, onClose, lazy } = props;
 
   const [isClosing, setIsClosing] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
-  const timeRef = useRef<ReturnType<typeof setTimeout>>();
+  const timeRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
     if (isOpen) {
@@ -60,12 +60,14 @@ export const Modal = (props: ModalProps) => {
       window.addEventListener('keydown', onKeyDown);
     }
     return () => {
-      clearTimeout(timeRef.current);
-      window.removeEventListener('keydown', onKeyDown);
+      if (timeRef.current !== null) {
+        clearTimeout(timeRef.current);
+        window.removeEventListener('keydown', onKeyDown);
+      }
     };
   }, [isOpen, onKeyDown]);
 
-  const mods: Record<string, boolean> = {
+  const mods: Mods = {
     [cls.opened]: isOpen,
     [cls.isClosing]: isClosing,
   };

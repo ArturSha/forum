@@ -15,6 +15,7 @@ export default ({ config }: { config: webpack.Configuration }) => {
   config.resolve?.extensions?.push('.ts', '.tsx');
 
   if (config.module?.rules) {
+    // @ts-expect-error temp
     config.module.rules = config.module.rules.map((rule: RuleSetRule) => {
       if (rule?.test?.toString().includes('svg')) {
         return { ...rule, exclude: /\.svg$/i };
@@ -32,7 +33,8 @@ export default ({ config }: { config: webpack.Configuration }) => {
 
   config.plugins?.push(
     new DefinePlugin({
-      __IS_DEV__: true,
+      __IS_DEV__: JSON.stringify(true),
+      __API__: JSON.stringify(''),
     })
   );
 

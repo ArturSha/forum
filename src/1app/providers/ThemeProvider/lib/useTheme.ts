@@ -14,12 +14,10 @@ export function useTheme(): useThemeResult {
 
   theme = theme === undefined ? Theme.LIGHT : theme;
   const toggleTheme = () => {
-    if (setTheme) {
-      const newTheme = theme === Theme.DARK ? Theme.LIGHT : Theme.DARK;
-      setTheme(newTheme);
-      document.body.className = newTheme;
-      localStorage.setItem(LOCAL_STORAGE_THEME_KEY, newTheme);
-    }
+    const newTheme = theme === Theme.DARK ? Theme.LIGHT : Theme.DARK;
+    setTheme?.(newTheme);
+    document.body.className = newTheme;
+    localStorage.setItem(LOCAL_STORAGE_THEME_KEY, newTheme);
   };
-  return { theme, toggleTheme };
+  return { theme: theme || Theme.LIGHT, toggleTheme };
 }
