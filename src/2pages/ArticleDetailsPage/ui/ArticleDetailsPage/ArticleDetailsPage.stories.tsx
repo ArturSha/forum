@@ -55,6 +55,5 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Normal: Story = {
-  args: { testId: 1 },
   decorators: [StoreDecorator({ articleDetails: { data: article } })],
 };
