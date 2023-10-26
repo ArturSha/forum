@@ -1,4 +1,5 @@
 import { type LoginSchema } from '4features/AuthByUsername';
+import { type ArticleDetailsSchema } from '5entities/Article';
 import { type CounterSchema } from '5entities/Counter';
 import { type ProfileSchema } from '5entities/Profile';
 import { type UserSchema } from '5entities/User';
@@ -19,6 +20,7 @@ export interface StateSchema {
   // Асинхронные редюсеры
   loginForm?: LoginSchema;
   profile?: ProfileSchema;
+  articleDetails?: ArticleDetailsSchema;
 }
 
 export type StateSchemaKey = keyof StateSchema;

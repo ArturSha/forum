@@ -1,1 +1,1 @@
-export { Text } from './ui/Text';
+export { Text, TextAlign, TextSize } from './ui/Text';
