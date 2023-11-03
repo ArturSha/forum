@@ -2,7 +2,7 @@ import { type Mods, classNames } from '6shared/lib/classNames/classNames';
 import cls from './Select.module.scss';
 import { type ChangeEvent, memo, useMemo } from 'react';
 
-interface SelectOption {
+export interface SelectOption {
   value: string;
   content: string;
 }

@@ -42,6 +42,7 @@ module.exports = {
     'i18next/no-literal-string': ['error', {markupOnly:true}],
     'n/no-callback-literal': 0,
     'react/display-name': 0,
+    '@typescript-eslint/no-unnecessary-type-assertion': 0,
     'react-hooks/rules-of-hooks': 'error',
     'react-hooks/exhaustive-deps': 'error',
     'multiline-ternary': 0
