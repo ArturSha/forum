@@ -26,7 +26,7 @@ import { TextTheme } from '6shared/ui/Text/ui/Text';
 import { useTranslation } from 'react-i18next';
 import { useInitialEffect } from '6shared/lib/hooks/useInitialEffect/useInitialEffect';
 import { useParams } from 'react-router-dom';
-import { Page } from '6shared/ui/Page/Page';
+import { Page } from '3widgets/Page/Page';
 
 const reducers: ReducersList = {
   profile: profileReducer,

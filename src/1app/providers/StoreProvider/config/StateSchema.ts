@@ -14,10 +14,12 @@ import {
   type CombinedState,
 } from '@reduxjs/toolkit';
 import { type AxiosInstance } from 'axios';
+import { type UISchema } from '4features/UI';
 
 export interface StateSchema {
   counter: CounterSchema;
   user: UserSchema;
+  ui: UISchema;
 
   // Асинхронные редюсеры
   loginForm?: LoginSchema;

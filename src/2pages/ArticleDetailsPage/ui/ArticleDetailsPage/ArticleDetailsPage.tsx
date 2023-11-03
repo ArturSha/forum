@@ -23,7 +23,7 @@ import { addCommentForArticle } from '../../model/services/addCommentForArticle/
 import { Button, ButtonTheme } from '6shared/ui/Button';
 import { RoutePath } from '6shared/config/routeConfig/routeConfig';
 import cls from './ArticleDetailsPage.module.scss';
-import { Page } from '6shared/ui/Page/Page';
+import { Page } from '3widgets/Page/Page';
 
 interface ArticleDetailsPageProps {
   className?: string;
