@@ -1,15 +1,11 @@
-import {
-  type ReducersMapObject,
-  configureStore,
-  type CombinedState,
-  type Reducer,
-} from '@reduxjs/toolkit';
-import { type StateSchema } from './StateSchema';
+import { configureStore, type ReducersMapObject } from '@reduxjs/toolkit';
 import { counterReducer } from '5entities/Counter';
 import { userReducer } from '5entities/User';
-import { createReducerManager } from './reducerManager';
 import { $api } from '6shared/api/api';
+import { type CombinedState, type Reducer } from 'redux';
 import { uiReducer } from '4features/UI';
+import { type StateSchema, type ThunkExtraArg } from './StateSchema';
+import { createReducerManager } from './reducerManager';
 
 export function createReduxStore(
   initialState?: StateSchema,
@@ -24,6 +20,10 @@ export function createReduxStore(
 
   const reducerManager = createReducerManager(rootReducers);
 
+  const extraArg: ThunkExtraArg = {
+    api: $api,
+  };
+
   const store = configureStore({
     reducer: reducerManager.reduce as Reducer<CombinedState<StateSchema>>,
     devTools: __IS_DEV__,
@@ -31,13 +31,12 @@ export function createReduxStore(
     middleware: (getDefaultMiddleware) =>
       getDefaultMiddleware({
         thunk: {
-          extraArgument: {
-            api: $api,
-          },
+          extraArgument: extraArg,
         },
       }),
   });
-  // @ts-expect-error temp.
+
+  // @ts-expect-error temporary
   store.reducerManager = reducerManager;
 
   return store;

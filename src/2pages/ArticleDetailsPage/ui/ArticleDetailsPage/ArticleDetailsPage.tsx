@@ -1,80 +1,98 @@
+import { classNames } from '6shared/lib/classNames/classNames';
 import { useTranslation } from 'react-i18next';
 import { memo, useCallback } from 'react';
-import { ArticleDetails } from '5entities/Article';
-import { useNavigate, useParams } from 'react-router-dom';
-import { Text } from '6shared/ui/Text';
+import { ArticleDetails, ArticleList } from '5entities/Article';
+import { useParams } from 'react-router-dom';
 import { CommentList } from '5entities/Comment';
-import { classNames } from '6shared/lib/classNames/classNames';
 import {
   DynamicModuleLoader,
   type ReducersList,
 } from '6shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
-import {
-  articleDetailsCommentsReducer,
-  getArticleComments,
-} from '../../model/slices/articleDetailsCommentsSlice';
-import { useSelector } from 'react-redux';
-import { getArticleCommentsIsLoading } from '../../model/selectors/comments';
+import { useDispatch, useSelector } from 'react-redux';
 import { useInitialEffect } from '6shared/lib/hooks/useInitialEffect/useInitialEffect';
-import { fetchCommentsByArticleId } from '../../model/services/fetchCommentsByArticleId/fetchCommentsByArticleId';
-import { useAppDispatch } from '6shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { AddCommentForm } from '4features/addCommentForm';
-import { addCommentForArticle } from '../../model/services/addCommentForArticle/addCommentForArticle';
-import { Button, ButtonTheme } from '6shared/ui/Button';
-import { RoutePath } from '6shared/config/routeConfig/routeConfig';
-import cls from './ArticleDetailsPage.module.scss';
 import { Page } from '3widgets/Page/Page';
+import { addCommentForArticle } from '../../model/services/addCommentForArticle/addCommentForArticle';
+import { fetchCommentsByArticleId } from '../../model/services/fetchCommentsByArticleId/fetchCommentsByArticleId';
+import cls from './ArticleDetailsPage.module.scss';
+import { getArticleComments } from '../../model/slices/articleDetailsCommentsSlice';
+import { getArticleCommentsIsLoading } from '../../model/selectors/comments';
+import { getArticleRecommendations } from '../../model/slices/articleDetailsPageRecommendationsSlice';
+import { getArticleRecommendationsIsLoading } from '../../model/selectors/recommendations';
+import { fetchArticleRecommendations } from '../../model/services/fetchArticleRecommendations/fetchArticleRecommendations';
+import { articleDetailsPageReducer } from '../../model/slices';
+import { Text, TextSize } from '6shared/ui/Text';
+import { ArticleDetailsPageHeader } from '../ArticleDetailsPageHeader/ArticleDetailsPageHeader';
 
 interface ArticleDetailsPageProps {
   className?: string;
 }
 
 const reducers: ReducersList = {
-  articleDetailsComments: articleDetailsCommentsReducer,
+  articleDetailsPage: articleDetailsPageReducer,
 };
 
 const ArticleDetailsPage = (props: ArticleDetailsPageProps) => {
   const { className } = props;
   const { t } = useTranslation('article-details');
   const { id } = useParams<{ id: string }>();
-  const dispatch = useAppDispatch();
+  const dispatch = useDispatch();
   const comments = useSelector(getArticleComments.selectAll);
+  const recommendations = useSelector(getArticleRecommendations.selectAll);
   const commentsIsLoading = useSelector(getArticleCommentsIsLoading);
-  const navigate = useNavigate();
-  const onBackToList = useCallback(() => {
-    navigate(RoutePath.articles);
-  }, [navigate]);
+  const recommendationsIsLoading = useSelector(
+    getArticleRecommendationsIsLoading
+  );
 
   const onSendComment = useCallback(
     (text: string) => {
+      // @ts-expect-error временно
       dispatch(addCommentForArticle(text));
     },
     [dispatch]
   );
 
   useInitialEffect(() => {
+    // @ts-expect-error временно
     dispatch(fetchCommentsByArticleId(id));
+    // @ts-expect-error временно
+    dispatch(fetchArticleRecommendations());
   });
 
   if (!id) {
     return (
-      <div className={classNames(cls.articleDetailsPage, {}, [className])}>
+      <Page className={classNames(cls.ArticleDetailsPage, {}, [className])}>
         {t('Статья не найдена')}
-      </div>
+      </Page>
     );
   }
+
   return (
     <DynamicModuleLoader reducers={reducers} removeAfterUnmount>
-      <Page className={classNames(cls.articleDetailsPage, {}, [className])}>
-        <Button theme={ButtonTheme.OUTLINE} onClick={onBackToList}>
-          {t('Назад к списку')}
-        </Button>
+      <Page className={classNames(cls.ArticleDetailsPage, {}, [className])}>
+        <ArticleDetailsPageHeader />
         <ArticleDetails id={id} />
-        <Text className={cls.commentTitle} title={t('Комментарии')} />
+        <Text
+          size={TextSize.L}
+          className={cls.commentTitle}
+          title={t('Рекомендуем')}
+        />
+        <ArticleList
+          articles={recommendations}
+          isLoading={recommendationsIsLoading}
+          className={cls.recommendations}
+          target='_blank'
+        />
+        <Text
+          size={TextSize.L}
+          className={cls.commentTitle}
+          title={t('Комментарии')}
+        />
         <AddCommentForm onSendComment={onSendComment} />
-        <CommentList comments={comments} isLoading={commentsIsLoading} />
+        <CommentList isLoading={commentsIsLoading} comments={comments} />
       </Page>
     </DynamicModuleLoader>
   );
 };
+
 export default memo(ArticleDetailsPage);

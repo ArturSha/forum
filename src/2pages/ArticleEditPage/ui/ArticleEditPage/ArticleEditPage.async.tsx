@@ -1,9 +1,9 @@
 import { lazy } from 'react';
 
-export const ArticleDetailsPageAsync = lazy(
+export const ArticleEditPageAsync = lazy(
   async () =>
     await new Promise((resolve) => {
       // @ts-expect-error псевдо задержка
-      setTimeout(() => resolve(import('./ArticleDetailsPage')), 400);
+      setTimeout(() => resolve(import('./ArticleEditPage')), 400);
     })
 );

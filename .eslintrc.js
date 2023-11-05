@@ -45,6 +45,7 @@ module.exports = {
     '@typescript-eslint/no-unnecessary-type-assertion': 0,
     'react-hooks/rules-of-hooks': 'error',
     'react-hooks/exhaustive-deps': 'error',
-    'multiline-ternary': 0
+    'multiline-ternary': 0,
+    '@typescript-eslint/no-invalid-void-type': 0,
   }, 
 };

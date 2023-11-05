@@ -1,15 +1,15 @@
 /* eslint-disable @typescript-eslint/no-dynamic-delete */
 import {
-  type ReducersMapObject,
-  combineReducers,
   type AnyAction,
+  combineReducers,
   type Reducer,
+  type ReducersMapObject,
 } from '@reduxjs/toolkit';
 import {
-  type StateSchemaKey,
-  type StateSchema,
-  type ReducerManager,
   type MountedReducers,
+  type ReducerManager,
+  type StateSchema,
+  type StateSchemaKey,
 } from './StateSchema';
 
 export function createReducerManager(
@@ -28,32 +28,30 @@ export function createReducerManager(
     reduce: (state: StateSchema, action: AnyAction) => {
       if (keysToRemove.length > 0) {
         state = { ...state };
-        for (const key of keysToRemove) {
+        keysToRemove.forEach((key) => {
           delete state[key];
-        }
+        });
         keysToRemove = [];
       }
       return combinedReducer(state, action);
     },
-
     add: (key: StateSchemaKey, reducer: Reducer) => {
       if (!key || reducers[key]) {
         return;
       }
-
       reducers[key] = reducer;
       mountedReducers[key] = true;
+
       combinedReducer = combineReducers(reducers);
     },
-
     remove: (key: StateSchemaKey) => {
       if (!key || !reducers[key]) {
         return;
       }
-
       delete reducers[key];
       keysToRemove.push(key);
       mountedReducers[key] = false;
+
       combinedReducer = combineReducers(reducers);
     },
   };

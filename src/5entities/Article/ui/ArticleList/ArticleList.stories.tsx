@@ -6,7 +6,7 @@ import {
 } from '5entities/Article/model/types/article';
 import { ArticleList } from './ArticleList';
 
-export const article = {
+export const ArticleData = {
   id: '1',
   title: 'Javascript news asfasjf asfjkask f',
   subtitle: 'Что нового в JS за 2022 год?',
@@ -111,7 +111,7 @@ export const LoadingSmall: Story = {
 export const ListSmall: Story = {
   args: {
     articles: new Array(9).fill(0).map((item, index) => ({
-      ...article,
+      ...ArticleData,
       id: String(index),
     })),
     isLoading: false,
@@ -122,7 +122,7 @@ export const ListSmall: Story = {
 export const ListBig: Story = {
   args: {
     articles: new Array(9).fill(0).map((item, index) => ({
-      ...article,
+      ...ArticleData,
       id: String(index),
     })),
     isLoading: false,
