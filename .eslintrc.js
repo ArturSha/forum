@@ -20,7 +20,7 @@ module.exports = {
     ecmaVersion: 'latest',
     sourceType: 'module',
   },
-  plugins: ['react', 'i18next','react-hooks'],
+  plugins: ['react', 'i18next','react-hooks', 'ulbi-tv-plugin'],
   rules: {
     'react/react-in-jsx-scope': 'off',
     'react/jsx-uses-react': 'off',
@@ -47,5 +47,6 @@ module.exports = {
     'react-hooks/exhaustive-deps': 'error',
     'multiline-ternary': 0,
     '@typescript-eslint/no-invalid-void-type': 0,
+    'ulbi-tv-plugin/path-checker': 'error',
   }, 
 };

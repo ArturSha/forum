@@ -7,6 +7,7 @@ import { SidebarItem } from '../SidebarItem/SidebarItem';
 import { useSelector } from 'react-redux';
 import { getSidebarItems } from '3widgets/Sidebar/model/selectors/getSidebarItems';
 import cls from './Sidebar.module.scss';
+import { VStack } from '6shared/ui/Stack';
 
 export const Sidebar = memo(() => {
   const [collapsed, setCollapsed] = useState(false);
@@ -23,7 +24,7 @@ export const Sidebar = memo(() => {
     [collapsed, sidebarItemsList]
   );
   return (
-    <menu
+    <aside
       data-testid='sidebar'
       className={classNames(cls.sidebar, { [cls.collapsed]: collapsed })}
     >
@@ -37,11 +38,13 @@ export const Sidebar = memo(() => {
       >
         {collapsed ? '>' : '<'}
       </Button>
-      <div className={cls.items}>{itemList}</div>
+      <VStack role={'navigation'} gap='8' className={cls.items}>
+        {itemList}
+      </VStack>
       <div className={cls.switchers}>
         <ThemeSwitcher />
         <LangSwitcher className={cls.lang} short={collapsed} />
       </div>
-    </menu>
+    </aside>
   );
 });

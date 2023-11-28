@@ -7,6 +7,7 @@ import { Text } from '6shared/ui/Text';
 import cls from './CommentCard.module.scss';
 import AppLink from '6shared/ui/AppLink/AppLink';
 import { RoutePath } from '6shared/config/routeConfig/routeConfig';
+import { VStack } from '6shared/ui/Stack';
 
 interface CommentCardProps {
   className?: string;
@@ -36,7 +37,11 @@ export const CommentCard = memo((props: CommentCardProps) => {
   }
 
   return (
-    <div className={classNames(cls.CommentCard, {}, [className])}>
+    <VStack
+      gap='8'
+      max
+      className={classNames(cls.CommentCard, {}, [className])}
+    >
       <AppLink
         to={`${RoutePath.profile}${comment.user.id}`}
         className={cls.header}
@@ -47,6 +52,6 @@ export const CommentCard = memo((props: CommentCardProps) => {
         <Text className={cls.username} title={comment.user.username} />
       </AppLink>
       <Text className={cls.text} text={comment.text} />
-    </div>
+    </VStack>
   );
 });
