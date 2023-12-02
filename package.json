@@ -23,6 +23,8 @@
   "license": "ISC",
   "devDependencies": {
     "@babel/core": "^7.22.11",
+    "@babel/plugin-transform-runtime": "^7.23.4",
+    "@babel/plugin-transform-typescript": "^7.23.5",
     "@babel/preset-env": "^7.22.10",
     "@babel/preset-react": "^7.22.15",
     "@babel/preset-typescript": "^7.22.15",
@@ -38,6 +40,8 @@
     "@svgr/webpack": "^8.1.0",
     "@testing-library/jest-dom": "^6.1.3",
     "@testing-library/react": "^14.0.0",
+    "@testing-library/user-event": "^14.5.1",
+    "@types/circular-dependency-plugin": "^5.0.8",
     "@types/jest": "^29.5.4",
     "@types/node": "^20.4.8",
     "@types/react": "^18.2.19",
@@ -50,6 +54,7 @@
     "babel-loader": "^9.1.3",
     "babel-plugin-i18next-extract": "^0.9.0",
     "chromatic": "^7.1.0",
+    "circular-dependency-plugin": "^5.2.2",
     "copy-webpack-plugin": "^11.0.0",
     "css-loader": "^6.8.1",
     "eslint": "^8.48.0",
@@ -63,10 +68,12 @@
     "eslint-plugin-storybook": "^0.6.13",
     "eslint-plugin-ulbi-tv-plugin": "^0.0.10",
     "file-loader": "^6.2.0",
+    "fork-ts-checker-webpack-plugin": "^9.0.2",
     "html-webpack-plugin": "^5.5.3",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^29.6.4",
     "jest-environment-jsdom": "^29.6.4",
+    "jest-html-reporters": "^3.1.5",
     "json-server": "^0.17.3",
     "mini-css-extract-plugin": "^2.7.6",
     "react-refresh": "^0.14.0",
@@ -97,7 +104,8 @@
     "react-i18next": "^13.2.0",
     "react-redux": "^8.1.2",
     "react-router-dom": "^6.15.0",
-    "react-virtualized": "^9.22.5"
+    "react-virtualized": "^9.22.5",
+    "storybook-addon-mock": "^4.3.0"
   },
   "readme": "ERROR: No README data found!",
   "_id": "forum@1.0.0"

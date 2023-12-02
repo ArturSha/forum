@@ -11,7 +11,7 @@ import { fetchArticlesList } from '../../model/services/fetchArticlesList/fetchA
 import {
   ArticleSortField,
   ArticleType,
-} from '5entities/Article/model/types/article';
+} from '5entities/Article/model/consts/articleConsts';
 import { type SortOrder } from '6shared/types';
 
 const articlesAdapter = createEntityAdapter<Article>({

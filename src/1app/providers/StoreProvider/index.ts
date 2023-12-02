@@ -6,10 +6,10 @@ import type {
   ThunkConfig,
 } from './config/StateSchema';
 
+export { StoreProvider, createReduxStore };
+
 export {
-  StoreProvider,
   type ReduxStoreWithManager,
-  createReduxStore,
   type StateSchema,
   type AppDispatch,
   type ThunkConfig,

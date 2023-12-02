@@ -24,12 +24,13 @@ import {
   getArticleDetailsError,
   getArticleDetailsIsLoading,
 } from '../../model/selectors/articleDetails';
-import { type ArticleBlock, ArticleBlockType } from '../../model/types/article';
+import { type ArticleBlock } from '../../model/types/article';
+import { ArticleBlockType } from '5entities/Article/model/consts/articleConsts';
 import { HStack, VStack } from '6shared/ui/Stack';
 
 interface ArticleDetailsProps {
   className?: string;
-  id: string;
+  id?: string;
 }
 
 const reducers: ReducersList = {
@@ -135,6 +136,7 @@ export const ArticleDetails = memo((props: ArticleDetailsProps) => {
     <DynamicModuleLoader reducers={reducers} removeAfterUnmount>
       <VStack
         gap='16'
+        max
         className={classNames(cls.ArticleDetails, {}, [className])}
       >
         {content}

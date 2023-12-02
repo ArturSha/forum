@@ -1,10 +1,8 @@
 /* eslint-disable storybook/prefer-pascal-case */
 /* eslint-disable @typescript-eslint/consistent-type-assertions */
 import type { Meta, StoryObj } from '@storybook/react';
-import {
-  ArticleView,
-  type Article,
-} from '5entities/Article/model/types/article';
+import { type Article } from '5entities/Article/model/types/article';
+import { ArticleView } from '5entities/Article/model/consts/articleConsts';
 import { ArticleListItem } from './ArticleListItem';
 
 export const article = {

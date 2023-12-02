@@ -7,12 +7,11 @@ import { Card } from '6shared/ui/Card/Card';
 import { Avatar } from '6shared/ui/Avatar/Avatar';
 import { RoutePath } from '6shared/config/routeConfig/routeConfig';
 import cls from './ArticleListItem.module.scss';
+import { type Article, type ArticleTextBlock } from '../../model/types/article';
 import {
-  type Article,
   ArticleBlockType,
-  type ArticleTextBlock,
   ArticleView,
-} from '../../model/types/article';
+} from '5entities/Article/model/consts/articleConsts';
 import { ArticleTextBlockComponent } from '../ArticleTextBlockComponent/ArticleTextBlockComponent';
 import { Button, ButtonTheme } from '6shared/ui/Button';
 import { Text } from '6shared/ui/Text';
