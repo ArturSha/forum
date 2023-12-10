@@ -1,4 +1,4 @@
-import { classNames, type Mods } from '6shared/lib/classNames/classNames';
+import { classNames, type Mods } from '@/6shared/lib/classNames/classNames';
 import {
   type DetailedHTMLProps,
   type HTMLAttributes,

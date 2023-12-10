@@ -1,6 +1,6 @@
-import { classNames } from '6shared/lib/classNames/classNames';
+import { classNames } from '@/6shared/lib/classNames/classNames';
 import { memo } from 'react';
-import { Code } from '6shared/ui/Code/Code';
+import { Code } from '@/6shared/ui/Code/Code';
 import cls from './ArticleCodeBlockComponent.module.scss';
 import { type ArticleCodeBlock } from '../../model/types/article';
 

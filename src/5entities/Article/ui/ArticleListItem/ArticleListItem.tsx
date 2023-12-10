@@ -1,21 +1,21 @@
-import { classNames } from '6shared/lib/classNames/classNames';
+import { classNames } from '@/6shared/lib/classNames/classNames';
 import { useTranslation } from 'react-i18next';
 import { type HTMLAttributeAnchorTarget, memo } from 'react';
-import { Icon } from '6shared/ui/Icon/Icon';
-import EyeIcon from '6shared/assets/icons/eye-20-20.svg';
-import { Card } from '6shared/ui/Card/Card';
-import { Avatar } from '6shared/ui/Avatar/Avatar';
-import { RoutePath } from '6shared/config/routeConfig/routeConfig';
-import cls from './ArticleListItem.module.scss';
+import { Icon } from '@/6shared/ui/Icon/Icon';
+import EyeIcon from '@/6shared/assets/icons/eye-20-20.svg';
+import { Card } from '@/6shared/ui/Card/Card';
+import { Avatar } from '@/6shared/ui/Avatar/Avatar';
 import { type Article, type ArticleTextBlock } from '../../model/types/article';
 import {
   ArticleBlockType,
   ArticleView,
-} from '5entities/Article/model/consts/articleConsts';
+} from '@/5entities/Article/model/consts/articleConsts';
 import { ArticleTextBlockComponent } from '../ArticleTextBlockComponent/ArticleTextBlockComponent';
-import { Button, ButtonTheme } from '6shared/ui/Button';
-import { Text } from '6shared/ui/Text';
-import AppLink from '6shared/ui/AppLink/AppLink';
+import { Button, ButtonTheme } from '@/6shared/ui/Button';
+import { Text } from '@/6shared/ui/Text';
+import AppLink from '@/6shared/ui/AppLink/AppLink';
+import { getRouteArticleDetails } from '@/6shared/const/router';
+import cls from './ArticleListItem.module.scss';
 
 interface ArticleListItemProps {
   className?: string;
@@ -61,10 +61,7 @@ export const ArticleListItem = memo((props: ArticleListItemProps) => {
             />
           )}
           <div className={cls.footer}>
-            <AppLink
-              to={RoutePath.article_details + article.id}
-              target={target}
-            >
+            <AppLink to={getRouteArticleDetails(article.id)} target={target}>
               <Button theme={ButtonTheme.OUTLINE}>
                 {t('Читать далее...')}
               </Button>
@@ -79,7 +76,7 @@ export const ArticleListItem = memo((props: ArticleListItemProps) => {
   return (
     <AppLink
       target={target}
-      to={RoutePath.article_details + article.id}
+      to={getRouteArticleDetails(article.id)}
       className={classNames(cls.ArticleListItem, {}, [className, cls[view]])}
     >
       <Card className={cls.card}>

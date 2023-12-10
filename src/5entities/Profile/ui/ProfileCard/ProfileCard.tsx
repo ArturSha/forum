@@ -1,17 +1,17 @@
-import { classNames, type Mods } from '6shared/lib/classNames/classNames';
+import { classNames, type Mods } from '@/6shared/lib/classNames/classNames';
 import { useTranslation } from 'react-i18next';
-import { Avatar } from '6shared/ui/Avatar/Avatar';
-import { type Currency } from '5entities/Currency/model/types/currency';
-import { CurrencySelect } from '5entities/Currency';
-import { type Country } from '5entities/Country/model/types/country';
-import { CountrySelect } from '5entities/Country';
-import { HStack, VStack } from '6shared/ui/Stack';
+import { Avatar } from '@/6shared/ui/Avatar/Avatar';
+import { type Currency } from '@/5entities/Currency/model/types/currency';
+import { CurrencySelect } from '@/5entities/Currency';
+import { type Country } from '@/5entities/Country/model/types/country';
+import { CountrySelect } from '@/5entities/Country';
+import { HStack, VStack } from '@/6shared/ui/Stack';
 import cls from './ProfileCard.module.scss';
 import { type Profile } from '../../model/types/profile';
-import Loader from '6shared/ui/Loader/Loader';
-import { Text } from '6shared/ui/Text';
-import { TextAlign, TextTheme } from '6shared/ui/Text/ui/Text';
-import { Input } from '6shared/ui/Input/ui/Input';
+import Loader from '@/6shared/ui/Loader/Loader';
+import { Text } from '@/6shared/ui/Text';
+import { TextAlign, TextTheme } from '@/6shared/ui/Text/ui/Text';
+import { Input } from '@/6shared/ui/Input/ui/Input';
 
 interface ProfileCardProps {
   className?: string;

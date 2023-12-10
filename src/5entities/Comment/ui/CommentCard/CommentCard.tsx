@@ -1,13 +1,13 @@
-import { classNames } from '6shared/lib/classNames/classNames';
+import { classNames } from '@/6shared/lib/classNames/classNames';
 import { memo } from 'react';
-import { Avatar } from '6shared/ui/Avatar/Avatar';
-import { Skeleton } from '6shared/ui/Skeleton/Skeleton';
+import { Avatar } from '@/6shared/ui/Avatar/Avatar';
+import { Skeleton } from '@/6shared/ui/Skeleton/Skeleton';
 import { type Comment } from '../../model/types/comment';
-import { Text } from '6shared/ui/Text';
+import { Text } from '@/6shared/ui/Text';
+import AppLink from '@/6shared/ui/AppLink/AppLink';
+import { VStack } from '@/6shared/ui/Stack';
+import { getRouteProfile } from '@/6shared/const/router';
 import cls from './CommentCard.module.scss';
-import AppLink from '6shared/ui/AppLink/AppLink';
-import { RoutePath } from '6shared/config/routeConfig/routeConfig';
-import { VStack } from '6shared/ui/Stack';
 
 interface CommentCardProps {
   className?: string;
@@ -44,10 +44,7 @@ export const CommentCard = memo((props: CommentCardProps) => {
       max
       className={classNames(cls.CommentCard, {}, [className])}
     >
-      <AppLink
-        to={`${RoutePath.profile}${comment.user.id}`}
-        className={cls.header}
-      >
+      <AppLink to={getRouteProfile(comment.user.id)} className={cls.header}>
         {comment.user.avatar ? (
           <Avatar size={30} src={comment.user.avatar} />
         ) : null}

@@ -1,12 +1,12 @@
 import { configureStore, type ReducersMapObject } from '@reduxjs/toolkit';
-import { counterReducer } from '5entities/Counter';
-import { userReducer } from '5entities/User';
-import { $api } from '6shared/api/api';
+import { counterReducer } from '@/5entities/Counter';
+import { userReducer } from '@/5entities/User';
+import { $api } from '@/6shared/api/api';
 import { type CombinedState, type Reducer } from 'redux';
-import { uiReducer } from '4features/UI';
+import { uiReducer } from '@/4features/UI';
 import { type StateSchema, type ThunkExtraArg } from './StateSchema';
 import { createReducerManager } from './reducerManager';
-import { rtkApi } from '6shared/api/rtkApi';
+import { rtkApi } from '@/6shared/api/rtkApi';
 
 export function createReduxStore(
   initialState?: StateSchema,

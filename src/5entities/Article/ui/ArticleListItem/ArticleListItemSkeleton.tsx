@@ -1,9 +1,9 @@
-import { classNames } from '6shared/lib/classNames/classNames';
+import { classNames } from '@/6shared/lib/classNames/classNames';
 import { memo } from 'react';
-import { Card } from '6shared/ui/Card/Card';
-import { Skeleton } from '6shared/ui/Skeleton/Skeleton';
+import { Card } from '@/6shared/ui/Card/Card';
+import { Skeleton } from '@/6shared/ui/Skeleton/Skeleton';
 import cls from './ArticleListItem.module.scss';
-import { ArticleView } from '5entities/Article/model/consts/articleConsts';
+import { ArticleView } from '@/5entities/Article/model/consts/articleConsts';
 
 interface ArticleListItemSkeletonProps {
   className?: string;

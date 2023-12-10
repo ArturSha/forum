@@ -1,6 +1,6 @@
-import { classNames } from '6shared/lib/classNames/classNames';
+import { classNames } from '@/6shared/lib/classNames/classNames';
 import { memo } from 'react';
-import { Text, TextAlign } from '6shared/ui/Text';
+import { Text, TextAlign } from '@/6shared/ui/Text';
 import cls from './ArticleImageBlockComponent.module.scss';
 import { type ArticleImageBlock } from '../../model/types/article';
 

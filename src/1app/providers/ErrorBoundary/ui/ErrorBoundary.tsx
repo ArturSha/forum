@@ -1,4 +1,4 @@
-import { ErrorPage } from '3widgets/ErrorPage/ui/ErrorPage';
+import { ErrorPage } from '@/3widgets/ErrorPage/ui/ErrorPage';
 import React, { Suspense, type ErrorInfo, type ReactNode } from 'react';
 
 interface ErrorBoundaryProps {

@@ -1,14 +1,12 @@
-import {
-  routeConfig,
-  type AppRouteProps,
-} from '6shared/config/routeConfig/routeConfig';
-import { PageLoader } from '6shared/ui/PageLoader/PageLoader';
+import { PageLoader } from '@/6shared/ui/PageLoader';
 import { Suspense, memo, useCallback } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { RequireAuth } from './RequireAuth';
+import { type AppRoutesProps } from '@/6shared/types/router';
+import { routeConfig } from '../config/routeConfig';
 
 const AppRouter = () => {
-  const renderWithWrapper = useCallback((route: AppRouteProps) => {
+  const renderWithWrapper = useCallback((route: AppRoutesProps) => {
     const element = (
       <Suspense fallback={<PageLoader />}>{route.element}</Suspense>
     );

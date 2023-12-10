@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import '1app/styles/index.scss'; // не работает
-import { ThemeDecorator } from '6shared/config/storybook/ThemeDecorator/ThemeDecorator';
-import { Theme } from '1app/providers/ThemeProvider';
+import '@/1app/styles/index.scss'; // не работает
+import { ThemeDecorator } from '@/6shared/config/storybook/ThemeDecorator/ThemeDecorator';
 import Loader from './Loader';
+import { Theme } from '@/6shared/const/theme';
 const meta = {
   title: '6shared/Loader',
   component: Loader,

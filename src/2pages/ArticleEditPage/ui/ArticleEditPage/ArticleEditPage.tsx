@@ -1,7 +1,7 @@
-import { classNames } from '6shared/lib/classNames/classNames';
+import { classNames } from '@/6shared/lib/classNames/classNames';
 import { useTranslation } from 'react-i18next';
 import { memo } from 'react';
-import { Page } from '3widgets/Page/Page';
+import { Page } from '@/3widgets/Page';
 import { useParams } from 'react-router-dom';
 import cls from './ArticleEditPage.module.scss';
 

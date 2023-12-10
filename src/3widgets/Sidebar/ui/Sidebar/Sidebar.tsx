@@ -1,13 +1,13 @@
-import { classNames } from '6shared/lib/classNames/classNames';
+import { classNames } from '@/6shared/lib/classNames/classNames';
 import { memo, useMemo, useState } from 'react';
-import { ThemeSwitcher } from '6shared/ui/ThemeSwitcher';
-import { LangSwitcher } from '6shared/ui/LangSwitcher/LangSwitcher';
-import { Button, ButtonSize, ButtonTheme } from '6shared/ui/Button/ui/Button';
+import { ThemeSwitcher } from '@/6shared/ui/ThemeSwitcher';
+import { LangSwitcher } from '@/6shared/ui/LangSwitcher/index';
+import { Button, ButtonSize, ButtonTheme } from '@/6shared/ui/Button/ui/Button';
 import { SidebarItem } from '../SidebarItem/SidebarItem';
 import { useSelector } from 'react-redux';
-import { getSidebarItems } from '3widgets/Sidebar/model/selectors/getSidebarItems';
+import { getSidebarItems } from '@/3widgets/Sidebar/model/selectors/getSidebarItems';
 import cls from './Sidebar.module.scss';
-import { VStack } from '6shared/ui/Stack';
+import { VStack } from '@/6shared/ui/Stack';
 
 export const Sidebar = memo(() => {
   const [collapsed, setCollapsed] = useState(false);

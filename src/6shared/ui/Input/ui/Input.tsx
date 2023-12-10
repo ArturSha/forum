@@ -1,4 +1,4 @@
-import { type Mods, classNames } from '6shared/lib/classNames/classNames';
+import { type Mods, classNames } from '@/6shared/lib/classNames/classNames';
 import cls from './Input.module.scss';
 import {
   memo,

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
 import path from 'path';
 import { type BuildPaths } from '../build/types/config';
 import type webpack from 'webpack';
@@ -15,6 +16,10 @@ export default ({ config }: { config: webpack.Configuration }) => {
   };
   config.resolve?.modules?.push(paths.src);
   config.resolve?.extensions?.push('.ts', '.tsx');
+  config!.resolve!.alias! = {
+    ...config.resolve?.alias,
+    '@': paths.src,
+  };
 
   if (config.module?.rules) {
     // @ts-expect-error temp

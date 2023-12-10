@@ -1,7 +1,7 @@
-import { classNames } from '6shared/lib/classNames/classNames';
+import { classNames } from '@/6shared/lib/classNames/classNames';
 import { memo, useCallback } from 'react';
 import { Button, ButtonTheme } from '../Button/ui/Button';
-import CopyIcon from '6shared/assets/icons/copy-20-20.svg';
+import CopyIcon from '@/6shared/assets/icons/copy-20-20.svg';
 import cls from './Code.module.scss';
 
 interface CodeProps {

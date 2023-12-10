@@ -1,8 +1,8 @@
-import { Country } from '5entities/Country';
-import { Currency } from '5entities/Currency';
+import { Country } from '@/5entities/Country';
+import { Currency } from '@/5entities/Currency';
 import { ValidateProfileError } from '../../consts/consts';
 import { updateProfileData } from './updateProfileData';
-import { TestAsyncThunk } from '6shared/lib/tests/testAsyncThunk/testAsyncThunk';
+import { TestAsyncThunk } from '@/6shared/lib/tests/testAsyncThunk/testAsyncThunk';
 
 const data = {
   username: 'admin',

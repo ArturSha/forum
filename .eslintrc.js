@@ -1,8 +1,10 @@
 module.exports = {
+  
   env: {
     browser: true,
     es2021: true,
   },
+  
   extends: ['standard-with-typescript', 'plugin:react/recommended', 'plugin:i18next/recommended', 'plugin:storybook/recommended'],
   overrides: [
     {
@@ -20,7 +22,12 @@ module.exports = {
     ecmaVersion: 'latest',
     sourceType: 'module',
   },
-  plugins: ['react', 'i18next','react-hooks', 'ulbi-tv-plugin'],
+  plugins: ['react', 'i18next','react-hooks', 'ulbi-tv-plugin', 'unused-imports'],
+  settings: {
+    react: {
+     version: "detect",
+    },
+  },
   rules: {
     'react/react-in-jsx-scope': 'off',
     'react/jsx-uses-react': 'off',
@@ -47,6 +54,9 @@ module.exports = {
     'react-hooks/exhaustive-deps': 'error',
     'multiline-ternary': 0,
     '@typescript-eslint/no-invalid-void-type': 0,
-    'ulbi-tv-plugin/path-checker': 'error',
-  }, 
+    'ulbi-tv-plugin/path-checker': [ 'error', {alias: '@'}],
+    'ulbi-tv-plugin/layer-imports': [ 'error', { alias: '@' }],
+    'ulbi-tv-plugin/public-api-imports': [ 'error', {alias: '@'}],
+    'unused-imports/no-unused-imports': 'error',
+  },
 };

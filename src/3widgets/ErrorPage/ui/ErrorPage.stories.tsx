@@ -1,8 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { ThemeDecorator } from '6shared/config/storybook/ThemeDecorator/ThemeDecorator';
-import { Theme } from '1app/providers/ThemeProvider';
-import '1app/styles/index.scss'; // не работает
+import { ThemeDecorator } from '@/6shared/config/storybook/ThemeDecorator/ThemeDecorator';
 import { ErrorPage } from './ErrorPage';
+import { Theme } from '@/6shared/const/theme';
 
 const meta = {
   title: '6widget/ErrorPage',

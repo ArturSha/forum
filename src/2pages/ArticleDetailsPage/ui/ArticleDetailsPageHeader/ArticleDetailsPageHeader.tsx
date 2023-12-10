@@ -1,13 +1,13 @@
-import { classNames } from '6shared/lib/classNames/classNames';
+import { classNames } from '@/6shared/lib/classNames/classNames';
 import { useTranslation } from 'react-i18next';
 import { memo, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { RoutePath } from '6shared/config/routeConfig/routeConfig';
 import { useSelector } from 'react-redux';
-import { getArticleDetailsData } from '5entities/Article/model/selectors/articleDetails';
-import { getCanEditArticle } from '2pages/ArticleDetailsPage/model/selectors/article';
-import { Button, ButtonTheme } from '6shared/ui/Button';
-import { HStack } from '6shared/ui/Stack';
+import { getArticleDetailsData } from '@/5entities/Article/model/selectors/articleDetails';
+import { getCanEditArticle } from '@/2pages/ArticleDetailsPage/model/selectors/article';
+import { Button, ButtonTheme } from '@/6shared/ui/Button';
+import { HStack } from '@/6shared/ui/Stack';
+import { getRouteArticleEdit, getRouteArticles } from '@/6shared/const/router';
 
 interface ArticleDetailsPageHeaderProps {
   className?: string;
@@ -22,12 +22,14 @@ export const ArticleDetailsPageHeader = memo(
     const article = useSelector(getArticleDetailsData);
 
     const onBackToList = useCallback(() => {
-      navigate(RoutePath.articles);
+      navigate(getRouteArticles());
     }, [navigate]);
 
     const onEditArticle = useCallback(() => {
-      navigate(`${RoutePath.article_details}${article?.id}/edit`);
-    }, [article?.id, navigate]);
+      if (article) {
+        navigate(getRouteArticleEdit(article.id));
+      }
+    }, [article, navigate]);
 
     return (
       <HStack

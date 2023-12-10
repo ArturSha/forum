@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { ProfileCard } from './ProfileCard';
-import { Country } from '5entities/Country';
-import { Currency } from '5entities/Currency';
-import avatar from '6shared/assets/test/storybook.jpg';
+import { Country } from '@/5entities/Country';
+import { Currency } from '@/5entities/Currency';
+import avatar from '@/6shared/assets/test/storybook.jpg';
 
 const meta = {
   title: '5entities/ProfileCard',

@@ -1,18 +1,18 @@
-import { classNames } from '6shared/lib/classNames/classNames';
+import { classNames } from '@/6shared/lib/classNames/classNames';
 import { useTranslation } from 'react-i18next';
 import { memo, useCallback } from 'react';
-import { useAppDispatch } from '6shared/lib/hooks/useAppDispatch/useAppDispatch';
+import { useAppDispatch } from '@/6shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { useSelector } from 'react-redux';
-import { useInitialEffect } from '6shared/lib/hooks/useInitialEffect/useInitialEffect';
-import { type Currency } from '5entities/Currency';
+import { useInitialEffect } from '@/6shared/lib/hooks/useInitialEffect/useInitialEffect';
+import { type Currency } from '@/5entities/Currency';
 
-import { type Country } from '5entities/Country';
-import { ProfileCard } from '5entities/Profile';
+import { type Country } from '@/5entities/Country';
+import { ProfileCard } from '@/5entities/Profile';
 import {
   DynamicModuleLoader,
   type ReducersList,
-} from '6shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
-import { VStack } from '6shared/ui/Stack';
+} from '@/6shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
+import { VStack } from '@/6shared/ui/Stack';
 import { getProfileForm } from '../../model/selectors/getProfileForm/getProfileForm';
 import { getProfileIsLoading } from '../../model/selectors/getProfileIsLoading/getProfileIsLoading';
 import { getProfileError } from '../../model/selectors/getProfileError/getProfileError';
@@ -20,10 +20,10 @@ import { getProfileReadonly } from '../../model/selectors/getProfileReadonly/get
 import { getProfileValidateErrors } from '../../model/selectors/getProfileValidateErrors/getProfileValidateErrors';
 import { fetchProfileData } from '../../model/services/fetchProfileData/fetchProfileData';
 import { profileActions, profileReducer } from '../../model/slice/profileSlice';
-import { ValidateProfileError } from '4features/editableProfileCard/model/consts/consts';
+import { ValidateProfileError } from '@/4features/editableProfileCard/model/consts/consts';
 import { EditableProfileCardHeader } from '../EditableProfileCardHeader/EditableProfileCardHeader';
-import { Text } from '6shared/ui/Text';
-import { TextTheme } from '6shared/ui/Text/ui/Text';
+import { Text } from '@/6shared/ui/Text';
+import { TextTheme } from '@/6shared/ui/Text/ui/Text';
 
 interface EditableProfileCardProps {
   className?: string;

@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import '1app/styles/index.scss'; // не работает
+import '@/1app/styles/index.scss'; // не работает
 import { Avatar } from './Avatar';
 import AvatarImg from './storybook.jpg';
 

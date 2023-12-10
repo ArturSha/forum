@@ -1,21 +1,21 @@
-import { classNames } from '6shared/lib/classNames/classNames';
+import { classNames } from '@/6shared/lib/classNames/classNames';
 import { useTranslation } from 'react-i18next';
 import {
   DynamicModuleLoader,
   type ReducersList,
-} from '6shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
+} from '@/6shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import { memo, useCallback, useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import { useAppDispatch } from '6shared/lib/hooks/useAppDispatch/useAppDispatch';
-import { Text, TextAlign, TextSize } from '6shared/ui/Text';
-import { Skeleton } from '6shared/ui/Skeleton/Skeleton';
-import { Avatar } from '6shared/ui/Avatar/Avatar';
-import EyeIcon from '6shared/assets/icons/eye-20-20.svg';
-import CalendarIcon from '6shared/assets/icons/calendar-20-20.svg';
-import { Icon } from '6shared/ui/Icon/Icon';
-import { ArticleCodeBlockComponent } from '5entities/Article/ui/ArticleCodeBlockComponent/ArticleCodeBlockComponent';
-import { ArticleImageBlockComponent } from '5entities/Article/ui/ArticleImageBlockComponent/ArticleImageBlockComponent';
-import { ArticleTextBlockComponent } from '5entities/Article/ui/ArticleTextBlockComponent/ArticleTextBlockComponent';
+import { useAppDispatch } from '@/6shared/lib/hooks/useAppDispatch/useAppDispatch';
+import { Text, TextAlign, TextSize } from '@/6shared/ui/Text';
+import { Skeleton } from '@/6shared/ui/Skeleton/Skeleton';
+import { Avatar } from '@/6shared/ui/Avatar/Avatar';
+import EyeIcon from '@/6shared/assets/icons/eye-20-20.svg';
+import CalendarIcon from '@/6shared/assets/icons/calendar-20-20.svg';
+import { Icon } from '@/6shared/ui/Icon/Icon';
+import { ArticleCodeBlockComponent } from '@/5entities/Article/ui/ArticleCodeBlockComponent/ArticleCodeBlockComponent';
+import { ArticleImageBlockComponent } from '@/5entities/Article/ui/ArticleImageBlockComponent/ArticleImageBlockComponent';
+import { ArticleTextBlockComponent } from '@/5entities/Article/ui/ArticleTextBlockComponent/ArticleTextBlockComponent';
 import { fetchArticleById } from '../../model/services/fetchArticleById/fetchArticleById';
 import { articleDetailsReducer } from '../../model/slice/articleDetailsSlice';
 import cls from './ArticleDetails.module.scss';
@@ -25,8 +25,8 @@ import {
   getArticleDetailsIsLoading,
 } from '../../model/selectors/articleDetails';
 import { type ArticleBlock } from '../../model/types/article';
-import { ArticleBlockType } from '5entities/Article/model/consts/articleConsts';
-import { HStack, VStack } from '6shared/ui/Stack';
+import { ArticleBlockType } from '@/5entities/Article/model/consts/articleConsts';
+import { HStack, VStack } from '@/6shared/ui/Stack';
 
 interface ArticleDetailsProps {
   className?: string;

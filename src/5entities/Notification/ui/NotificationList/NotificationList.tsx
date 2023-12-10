@@ -1,0 +1,45 @@
+import { classNames } from '@/6shared/lib/classNames/classNames';
+import { memo } from 'react';
+import { VStack } from '@/6shared/ui/Stack';
+import { Skeleton } from '@/6shared/ui/Skeleton/Skeleton';
+import { useNotifications } from '../../api/notificationApi';
+import cls from './NotificationList.module.scss';
+import { NotificationItem } from '../NotificationItem/NotificationItem';
+import { type Notification } from '../../model/types/notification';
+
+interface NotificationListProps {
+  className?: string;
+}
+
+export const NotificationList = memo((props: NotificationListProps) => {
+  const { className } = props;
+  const { data, isLoading } = useNotifications(null, {
+    pollingInterval: 10000,
+  });
+
+  if (isLoading) {
+    return (
+      <VStack
+        gap='16'
+        max
+        className={classNames(cls.NotificationList, {}, [className])}
+      >
+        <Skeleton width='100%' border='8px' height='80px' />
+        <Skeleton width='100%' border='8px' height='80px' />
+        <Skeleton width='100%' border='8px' height='80px' />
+      </VStack>
+    );
+  }
+
+  return (
+    <VStack
+      gap='16'
+      max
+      className={classNames(cls.NotificationList, {}, [className])}
+    >
+      {data?.map((item: Notification) => (
+        <NotificationItem key={item.id} item={item} />
+      ))}
+    </VStack>
+  );
+});

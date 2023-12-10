@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { ThemeDecorator } from '6shared/config/storybook/ThemeDecorator/ThemeDecorator';
-import { Theme } from '1app/providers/ThemeProvider';
+import { ThemeDecorator } from '@/6shared/config/storybook/ThemeDecorator/ThemeDecorator';
 import { Navbar } from './Navbar';
-import '1app/styles/index.scss'; // не работает
-import { StoreDecorator } from '6shared/config/storybook/StoreDecorator/StoreDecorator';
+import '@/1app/styles/index.scss'; // не работает
+import { StoreDecorator } from '@/6shared/config/storybook/StoreDecorator/StoreDecorator';
+import { Theme } from '@/6shared/const/theme';
 
 const meta = {
   title: '6widget/Navbar',

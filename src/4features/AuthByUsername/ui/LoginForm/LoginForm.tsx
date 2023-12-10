@@ -1,13 +1,13 @@
-import { classNames } from '6shared/lib/classNames/classNames';
+import { classNames } from '@/6shared/lib/classNames/classNames';
 import { useTranslation } from 'react-i18next';
-import { Button, ButtonTheme } from '6shared/ui/Button/ui/Button';
-import { Input } from '6shared/ui/Input/ui/Input';
+import { Button, ButtonTheme } from '@/6shared/ui/Button/ui/Button';
+import { Input } from '@/6shared/ui/Input/ui/Input';
 import { useSelector } from 'react-redux';
 import { memo, useCallback } from 'react';
 import { loginActions, loginReducer } from '../../model/slice/loginSlice';
 import { loginByUsername } from '../../model/services/loginByUsername/loginByUsername';
-import { Text } from '6shared/ui/Text';
-import { TextTheme } from '6shared/ui/Text/ui/Text';
+import { Text } from '@/6shared/ui/Text';
+import { TextTheme } from '@/6shared/ui/Text/ui/Text';
 import { getLoginUsername } from '../../model/selectors/getLoginUsername/getLoginUsername';
 import { getLoginPassword } from '../../model/selectors/getLoginPassword/getLoginPassword';
 import { getLoginError } from '../../model/selectors/getLoginError/getLoginError';
@@ -15,10 +15,10 @@ import { getLoginIsLoading } from '../../model/selectors/getLoginIsLoading/getLo
 import {
   DynamicModuleLoader,
   type ReducersList,
-} from '6shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
-import i18n from '6shared/config/i18n/i18n';
+} from '@/6shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
+import i18n from '@/6shared/config/i18n/i18n';
 import cls from './LoginForm.module.scss';
-import { useAppDispatch } from '6shared/lib/hooks/useAppDispatch/useAppDispatch';
+import { useAppDispatch } from '@/6shared/lib/hooks/useAppDispatch/useAppDispatch';
 
 export interface LoginFormProps {
   className?: string;

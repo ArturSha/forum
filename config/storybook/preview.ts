@@ -1,12 +1,19 @@
-import { StyleDecorator } from '6shared/config/storybook/StyleDecorator/StyleDecorator';
+import { StyleDecorator } from '@/6shared/config/storybook/StyleDecorator/StyleDecorator';
 import type { Preview } from '@storybook/react';
-import '1app/styles/index.scss'; // toDo ==> глобальные переменные пока что работают не так как хотелось(приходиться применять StyleDecorator)
-import { ThemeDecorator } from '6shared/config/storybook/ThemeDecorator/ThemeDecorator';
-import { Theme } from '1app/providers/ThemeProvider';
-import { RouterDecorator } from '6shared/config/storybook/RouterDecorator/RouterDecorator';
-import { SuspenseDecorator } from '6shared/config/storybook/SuspenseDecorator/SuspenseDecorator';
+import { ThemeDecorator } from '@/6shared/config/storybook/ThemeDecorator/ThemeDecorator';
+import { RouterDecorator } from '@/6shared/config/storybook/RouterDecorator/RouterDecorator';
+import { SuspenseDecorator } from '@/6shared/config/storybook/SuspenseDecorator/SuspenseDecorator';
+import { Theme } from '@/6shared/const/theme';
 const preview: Preview = {
   parameters: {
+    themes: {
+      default: 'light',
+      list: [
+        { name: 'light', class: Theme.LIGHT, color: '#ffffff' },
+        { name: 'dark', class: Theme.DARK, color: '#000000' },
+        { name: 'orange', class: Theme.ORANGE, color: '#ffb005' },
+      ],
+    },
     actions: { argTypesRegex: '^on[A-Z].*' },
     controls: {
       matchers: {
