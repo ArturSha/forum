@@ -5,7 +5,7 @@ import { HStack } from '../../../Stack';
 import cls from './ListBox.module.scss';
 import { mapDirectionClass } from '../../styles/consts';
 import popupCls from '../../styles/popup.module.scss';
-import { type DropdownDirection } from '@/6shared/types';
+import { type DropdownDirection } from '@/6shared/types/sort';
 import { Button } from '@/6shared/ui/Button';
 
 export interface ListBoxItem {

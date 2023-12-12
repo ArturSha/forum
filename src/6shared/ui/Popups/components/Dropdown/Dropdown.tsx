@@ -5,7 +5,7 @@ import { Fragment, type ReactNode } from 'react';
 import { mapDirectionClass } from '../../styles/consts';
 import popupCls from '../../styles/popup.module.scss';
 import cls from './Dropdown.module.scss';
-import { type DropdownDirection } from '@/6shared/types';
+import { type DropdownDirection } from '@/6shared/types/sort';
 import AppLink from '@/6shared/ui/AppLink/AppLink';
 
 export interface DropdownItem {

@@ -12,7 +12,7 @@ import {
   ArticleSortField,
   ArticleType,
 } from '@/5entities/Article/model/consts/articleConsts';
-import { type SortOrder } from '@/6shared/types';
+import { type SortOrder } from '@/6shared/types/sort';
 
 const articlesAdapter = createEntityAdapter<Article>({
   selectId: (article) => article.id,

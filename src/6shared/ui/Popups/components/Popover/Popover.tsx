@@ -4,7 +4,7 @@ import { type ReactNode } from 'react';
 import { mapDirectionClass } from '../../styles/consts';
 import cls from './Popover.module.scss';
 import popupCls from '../../styles/popup.module.scss';
-import { type DropdownDirection } from '@/6shared/types';
+import { type DropdownDirection } from '@/6shared/types/sort';
 
 interface PopoverProps {
   className?: string;

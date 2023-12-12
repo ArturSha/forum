@@ -5,7 +5,7 @@ import { type ArticleSortField, type ArticleView } from '@/5entities/Article';
 import { useSelector } from 'react-redux';
 import { useAppDispatch } from '@/6shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { Card } from '@/6shared/ui/Card/Card';
-import { type SortOrder } from '@/6shared/types';
+import { type SortOrder } from '@/6shared/types/sort';
 import { useDebounce } from '@/6shared/lib/hooks/useDebounce/useDebounce';
 import { type ArticleType } from '@/5entities/Article/model/consts/articleConsts';
 import { fetchArticlesList } from '../../model/services/fetchArticlesList/fetchArticlesList';

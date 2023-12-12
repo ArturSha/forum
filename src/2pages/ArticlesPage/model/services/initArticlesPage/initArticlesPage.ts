@@ -5,7 +5,7 @@ import { getArticlesPageInited } from '../../selectors/articlesPageSelectors';
 import { articlesPageActions } from '../../slices/articlesPageSlice';
 import { fetchArticlesList } from '../fetchArticlesList/fetchArticlesList';
 import { type URLSearchParams } from 'url';
-import { type SortOrder } from '@/6shared/types';
+import { type SortOrder } from '@/6shared/types/sort';
 import { type ArticleType, type ArticleSortField } from '@/5entities/Article';
 
 export const initArticlesPage = createAsyncThunk<
