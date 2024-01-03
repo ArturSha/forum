@@ -1,13 +1,9 @@
-import { Theme } from '../../const/theme';
-import { type ReactNode, createContext } from 'react';
+import { createContext } from 'react';
+import { type Theme } from '../../const/theme';
 
 export interface ThemeContextProps {
   theme?: Theme;
   setTheme?: (theme: Theme) => void;
-  children?: ReactNode;
 }
 
-export const ThemeContext = createContext<ThemeContextProps>({
-  theme: Theme.LIGHT,
-  setTheme: () => {},
-});
+export const ThemeContext = createContext<ThemeContextProps>({});

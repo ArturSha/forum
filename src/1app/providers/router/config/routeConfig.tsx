@@ -19,13 +19,19 @@ import {
   getRouteArticles,
   getRouteMain,
   getRouteProfile,
+  getRouteSettings,
 } from '@/6shared/const/router';
 import { type AppRoutesProps } from '@/6shared/types/router';
+import { SettingsPage } from '@/2pages/SettingsPage';
 
 export const routeConfig: Record<AppRoutes, AppRoutesProps> = {
   [AppRoutes.MAIN]: {
     path: getRouteMain(),
     element: <MainPage />,
+  },
+  [AppRoutes.SETTINGS]: {
+    path: getRouteSettings(),
+    element: <SettingsPage />,
   },
   [AppRoutes.ABOUT]: {
     path: getRouteAbout(),

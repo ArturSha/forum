@@ -1,12 +1,12 @@
-import { classNames } from '@/6shared/lib/classNames/classNames';
 import { useTranslation } from 'react-i18next';
 import { memo, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import { getArticleDetailsData } from '@/5entities/Article/model/selectors/articleDetails';
-import { getCanEditArticle } from '@/2pages/ArticleDetailsPage/model/selectors/article';
-import { Button, ButtonTheme } from '@/6shared/ui/Button';
-import { HStack } from '@/6shared/ui/Stack';
+import { Button, ButtonTheme } from '@/6shared/ui/deprecated/Button';
+import { classNames } from '@/6shared/lib/classNames/classNames';
+import { getArticleDetailsData } from '@/5entities/Article';
+import { HStack } from '@/6shared/ui/redesigned/Stack';
+import { getCanEditArticle } from '../../model/selectors/article';
 import { getRouteArticleEdit, getRouteArticles } from '@/6shared/const/router';
 
 interface ArticleDetailsPageHeaderProps {
@@ -32,11 +32,7 @@ export const ArticleDetailsPageHeader = memo(
     }, [article, navigate]);
 
     return (
-      <HStack
-        max
-        justify={'between'}
-        className={classNames('', {}, [className])}
-      >
+      <HStack max justify='between' className={classNames('', {}, [className])}>
         <Button theme={ButtonTheme.OUTLINE} onClick={onBackToList}>
           {t('Назад к списку')}
         </Button>

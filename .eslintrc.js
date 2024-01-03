@@ -15,9 +15,11 @@ module.exports = {
       files: ['.eslintrc.{js,cjs}'],
       parserOptions: {
         sourceType: 'script',
+        
       },
     },
   ],
+  // includes : '["./.eslintrc.js"]',
   parserOptions: {
     ecmaVersion: 'latest',
     sourceType: 'module',

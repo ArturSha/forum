@@ -1,24 +1,33 @@
-import { classNames } from '@/6shared/lib/classNames/classNames';
 import { useTranslation } from 'react-i18next';
-import { Button, ButtonTheme } from '@/6shared/ui/Button/ui/Button';
-import { Input } from '@/6shared/ui/Input/ui/Input';
 import { useSelector } from 'react-redux';
 import { memo, useCallback } from 'react';
-import { loginActions, loginReducer } from '../../model/slice/loginSlice';
-import { loginByUsername } from '../../model/services/loginByUsername/loginByUsername';
-import { Text } from '@/6shared/ui/Text';
-import { TextTheme } from '@/6shared/ui/Text/ui/Text';
-import { getLoginUsername } from '../../model/selectors/getLoginUsername/getLoginUsername';
-import { getLoginPassword } from '../../model/selectors/getLoginPassword/getLoginPassword';
-import { getLoginError } from '../../model/selectors/getLoginError/getLoginError';
-import { getLoginIsLoading } from '../../model/selectors/getLoginIsLoading/getLoginIsLoading';
+import { classNames } from '@/6shared/lib/classNames/classNames';
+import {
+  Button as ButtonDeprecated,
+  ButtonTheme,
+} from '@/6shared/ui/deprecated/Button';
+import { Input as InputDeprecated } from '@/6shared/ui/deprecated/Input';
+import {
+  Text as TextDeprecated,
+  TextTheme,
+} from '@/6shared/ui/deprecated/Text';
+import { Text } from '@/6shared/ui/redesigned/Text';
 import {
   DynamicModuleLoader,
   type ReducersList,
 } from '@/6shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
-import i18n from '@/6shared/config/i18n/i18n';
-import cls from './LoginForm.module.scss';
 import { useAppDispatch } from '@/6shared/lib/hooks/useAppDispatch/useAppDispatch';
+import { getLoginUsername } from '../../model/selectors/getLoginUsername/getLoginUsername';
+import { getLoginPassword } from '../../model/selectors/getLoginPassword/getLoginPassword';
+import { getLoginIsLoading } from '../../model/selectors/getLoginIsLoading/getLoginIsLoading';
+import { getLoginError } from '../../model/selectors/getLoginError/getLoginError';
+import { loginByUsername } from '../../model/services/loginByUsername/loginByUsername';
+import { loginActions, loginReducer } from '../../model/slice/loginSlice';
+import cls from './LoginForm.module.scss';
+import { ToggleFeatures } from '@/6shared/lib/features';
+import { Button } from '@/6shared/ui/redesigned/Button';
+import { Input } from '@/6shared/ui/redesigned/Input';
+import { VStack } from '@/6shared/ui/redesigned/Stack';
 
 export interface LoginFormProps {
   className?: string;
@@ -29,13 +38,13 @@ const initialReducers: ReducersList = {
   loginForm: loginReducer,
 };
 
-const LoginForm = memo(({ className = '', onSuccess }: LoginFormProps) => {
+const LoginForm = memo(({ className, onSuccess }: LoginFormProps) => {
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
   const username = useSelector(getLoginUsername);
   const password = useSelector(getLoginPassword);
-  const error = useSelector(getLoginError);
   const isLoading = useSelector(getLoginIsLoading);
+  const error = useSelector(getLoginError);
 
   const onChangeUsername = useCallback(
     (value: string) => {
@@ -52,46 +61,87 @@ const LoginForm = memo(({ className = '', onSuccess }: LoginFormProps) => {
   );
 
   const onLoginClick = useCallback(async () => {
-    const result = await dispatch(loginByUsername({ password, username }));
+    const result = await dispatch(loginByUsername({ username, password }));
     if (result.meta.requestStatus === 'fulfilled') {
       onSuccess();
     }
-  }, [dispatch, onSuccess, password, username]);
+  }, [onSuccess, dispatch, password, username]);
 
   return (
-    <DynamicModuleLoader removeAfterUnmount={true} reducers={initialReducers}>
-      <div className={classNames(cls.loginForm, {}, [className])}>
-        <Text title={t('Форма авторизации')} />
-        {error && (
-          <Text
-            text={i18n.t('Вы ввели неверный логин или пароль')}
-            theme={TextTheme.ERROR}
-          />
-        )}
-        <Input
-          autofocus={true}
-          className={cls.input}
-          type='text'
-          placeholder={t('Введите имя')}
-          onChange={onChangeUsername}
-          value={username}
-        />
-        <Input
-          className={cls.input}
-          type='text'
-          placeholder={t('Введите пароль')}
-          onChange={onChangePassword}
-          value={password}
-        />
-        <Button
-          onClick={onLoginClick}
-          theme={ButtonTheme.OUTLINE}
-          className={cls.loginBtn}
-          disabled={isLoading}
-        >
-          {t('Войти')}
-        </Button>
-      </div>
+    <DynamicModuleLoader removeAfterUnmount reducers={initialReducers}>
+      <ToggleFeatures
+        feature='isAppRedesigned'
+        on={
+          <VStack
+            gap='16'
+            className={classNames(cls.LoginForm, {}, [className])}
+          >
+            <Text title={t('Форма авторизации')} />
+            {error && (
+              <Text
+                text={t('Вы ввели неверный логин или пароль')}
+                variant='error'
+              />
+            )}
+            <Input
+              autofocus
+              type='text'
+              className={cls.input}
+              placeholder={t('Введите username')}
+              onChange={onChangeUsername}
+              value={username}
+            />
+            <Input
+              type='text'
+              className={cls.input}
+              placeholder={t('Введите пароль')}
+              onChange={onChangePassword}
+              value={password}
+            />
+            <Button
+              className={cls.loginBtn}
+              onClick={onLoginClick}
+              disabled={isLoading}
+            >
+              {t('Войти')}
+            </Button>
+          </VStack>
+        }
+        off={
+          <div className={classNames(cls.LoginForm, {}, [className])}>
+            <TextDeprecated title={t('Форма авторизации')} />
+            {error && (
+              <TextDeprecated
+                text={t('Вы ввели неверный логин или пароль')}
+                theme={TextTheme.ERROR}
+              />
+            )}
+            <InputDeprecated
+              autofocus
+              type='text'
+              className={cls.input}
+              placeholder={t('Введите username')}
+              onChange={onChangeUsername}
+              value={username}
+            />
+            <InputDeprecated
+              type='text'
+              className={cls.input}
+              placeholder={t('Введите пароль')}
+              onChange={onChangePassword}
+              value={password}
+            />
+            <ButtonDeprecated
+              theme={ButtonTheme.OUTLINE}
+              className={cls.loginBtn}
+              onClick={onLoginClick}
+              disabled={isLoading}
+            >
+              {t('Войти')}
+            </ButtonDeprecated>
+          </div>
+        }
+      />
     </DynamicModuleLoader>
   );
 });

@@ -1,4 +1,4 @@
-import { PageLoader } from '@/6shared/ui/PageLoader';
+import { PageLoader } from '@/6shared/ui/deprecated/PageLoader';
 import { Suspense, memo, useCallback } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { RequireAuth } from './RequireAuth';

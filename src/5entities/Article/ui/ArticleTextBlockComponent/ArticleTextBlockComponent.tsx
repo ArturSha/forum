@@ -1,8 +1,11 @@
-import { classNames } from '@/6shared/lib/classNames/classNames';
+import { useTranslation } from 'react-i18next';
 import { memo } from 'react';
-import { Text } from '@/6shared/ui/Text/index';
+import { classNames } from '@/6shared/lib/classNames/classNames';
+import { Text as TextDeprecated } from '@/6shared/ui/deprecated/Text';
+import { Text } from '@/6shared/ui/redesigned/Text';
 import cls from './ArticleTextBlockComponent.module.scss';
 import { type ArticleTextBlock } from '../../model/types/article';
+import { ToggleFeatures } from '@/6shared/lib/features';
 
 interface ArticleTextBlockComponentProps {
   className?: string;
@@ -12,14 +15,38 @@ interface ArticleTextBlockComponentProps {
 export const ArticleTextBlockComponent = memo(
   (props: ArticleTextBlockComponentProps) => {
     const { className, block } = props;
+    const { t } = useTranslation();
 
     return (
       <div
         className={classNames(cls.ArticleTextBlockComponent, {}, [className])}
       >
-        {block.title && <Text title={block.title} className={cls.title} />}
+        {block.title && (
+          <ToggleFeatures
+            feature='isAppRedesigned'
+            on={<Text title={block.title} className={cls.title} />}
+            off={<TextDeprecated title={block.title} className={cls.title} />}
+          />
+        )}
         {block.paragraphs.map((paragraph, index) => (
-          <Text key={paragraph} text={paragraph} className={cls.paragraph} />
+          // eslint-disable-next-line react/jsx-key
+          <ToggleFeatures
+            feature='isAppRedesigned'
+            on={
+              <Text
+                key={paragraph}
+                text={paragraph}
+                className={cls.paragraph}
+              />
+            }
+            off={
+              <TextDeprecated
+                key={paragraph}
+                text={paragraph}
+                className={cls.paragraph}
+              />
+            }
+          />
         ))}
       </div>
     );

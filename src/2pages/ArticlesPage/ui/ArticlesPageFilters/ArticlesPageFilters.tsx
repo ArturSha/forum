@@ -4,7 +4,7 @@ import { memo, useCallback } from 'react';
 import { type ArticleSortField, type ArticleView } from '@/5entities/Article';
 import { useSelector } from 'react-redux';
 import { useAppDispatch } from '@/6shared/lib/hooks/useAppDispatch/useAppDispatch';
-import { Card } from '@/6shared/ui/Card/Card';
+import { Card } from '@/6shared/ui/deprecated/Card/Card';
 import { type SortOrder } from '@/6shared/types/sort';
 import { useDebounce } from '@/6shared/lib/hooks/useDebounce/useDebounce';
 import { type ArticleType } from '@/5entities/Article/model/consts/articleConsts';
@@ -18,7 +18,7 @@ import {
   getArticlesPageView,
 } from '../../model/selectors/articlesPageSelectors';
 import { articlesPageActions } from '../../model/slices/articlesPageSlice';
-import { Input } from '@/6shared/ui/Input/ui/Input';
+import { Input } from '@/6shared/ui/deprecated/Input';
 import { ArticleSortSelector } from '@/4features/ArticleSortSelector';
 import { ArticleViewSelector } from '@/4features/ArticleViewSelector';
 import { ArticleTypeTabs } from '@/4features/ArticleTypeTabs';

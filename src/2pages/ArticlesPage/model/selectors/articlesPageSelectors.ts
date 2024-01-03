@@ -1,5 +1,10 @@
 import { type StateSchema } from '@/1app/providers/StoreProvider';
-import { ArticleSortField, ArticleType, ArticleView } from '@/5entities/Article';
+import {
+  ArticleSortField,
+  ArticleType,
+  ArticleView,
+} from '@/5entities/Article';
+import { buildSelector } from '@/6shared/lib/store';
 
 export const getArticlesPageIsLoading = (state: StateSchema) =>
   state.articlesPage?.isLoading || false;
@@ -23,3 +28,6 @@ export const getArticlesPageSearch = (state: StateSchema) =>
   state.articlesPage?.search ?? '';
 export const getArticlesPageType = (state: StateSchema) =>
   state.articlesPage?.type ?? ArticleType.ALL;
+export const [useArticleItemById] = buildSelector(
+  (state: StateSchema, id: string) => state.articlesPage?.entities[id]
+);

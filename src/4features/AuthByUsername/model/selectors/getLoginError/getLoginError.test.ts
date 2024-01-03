@@ -6,15 +6,12 @@ describe('getLoginError.test', () => {
     const state: DeepPartial<StateSchema> = {
       loginForm: {
         error: 'error',
-        isLoading: false,
-        password: '12',
-        username: '123',
       },
     };
     expect(getLoginError(state as StateSchema)).toEqual('error');
   });
   test('should work with empty state', () => {
     const state: DeepPartial<StateSchema> = {};
-    expect(getLoginError(state as StateSchema)).toEqual('');
+    expect(getLoginError(state as StateSchema)).toEqual(undefined);
   });
 });

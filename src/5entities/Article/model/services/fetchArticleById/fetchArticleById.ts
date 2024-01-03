@@ -10,7 +10,7 @@ export const fetchArticleById = createAsyncThunk<
   const { extra, rejectWithValue } = thunkApi;
 
   if (!articleId) {
-    throw new Error();
+    throw new Error('');
   }
 
   try {
