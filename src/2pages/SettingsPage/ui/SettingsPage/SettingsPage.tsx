@@ -5,12 +5,7 @@ import { Page } from '@/3widgets/Page';
 import { VStack } from '@/6shared/ui/redesigned/Stack';
 import { UiDesignSwitcher } from '@/4features/uiDesignSwitcher';
 
-interface SettingsPageProps {
-  className?: string;
-}
-
-const SettingsPage = memo((props: SettingsPageProps) => {
-  const { className } = props;
+const SettingsPage = memo(() => {
   const { t } = useTranslation();
 
   return (

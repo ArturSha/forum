@@ -1,5 +1,3 @@
-import { useTranslation } from 'react-i18next';
-
 import { type Currency } from '@/5entities/Currency';
 import { type Country } from '@/5entities/Country';
 import { type Profile } from '../../model/types/profile';
@@ -33,7 +31,6 @@ export interface ProfileCardProps {
 
 export const ProfileCard = (props: ProfileCardProps) => {
   const { isLoading, error } = props;
-  const { t } = useTranslation();
 
   if (isLoading) {
     return (
